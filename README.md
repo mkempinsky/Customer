@@ -1,6 +1,6 @@
 # NoshSpot - Customer
 
-## Group project to make a restaurant ordering app for diners and restauranteurs.
+## Customer facing site to be able to order food from any restaurant
 
 ### Technology Used:
 - AngularJS
