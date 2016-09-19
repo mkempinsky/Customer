@@ -21,12 +21,12 @@
             .state('restaurants.list', {
                 url: '/list',
                 controller: 'RestaurantListController as restaurantList',
-                templateUrl: 'js/restaurants/list.html'
+                templateUrl: 'js/restaurant/restaurantList.html'
             })
             .state('restaurants.detail', {
                 url: '/detail?restaurantId',
                 controller: 'RestaurantDetailController as restaurantDetail',
-                templateUrl: 'js/restaurants/detail.html'
+                templateUrl: 'js/restaurant/detail.html'//Make sure this works
             })
         .state('login', {
             url: '/login',  

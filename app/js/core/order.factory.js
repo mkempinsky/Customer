@@ -3,12 +3,12 @@
 
     angular
         .module('app')
-        .factory('OrderFactory', OrderFactory);
+        .factory('orderFactory', orderFactory);
 
-    Orderfactory.$inject = ['$http', '$q', 'CRUDFactory', 'apiUrl'];
+    orderFactory.$inject = ['$http', '$q', 'CRUDFactory', 'apiUrl'];
 
     /* @ngInject */
-    function OrderFactory($http, $q, CRUDFactory, apiUrl) {
+    function orderFactory($http, $q, CRUDFactory, apiUrl) {
     	return service;
 	}
 })();
