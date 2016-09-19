@@ -5,10 +5,10 @@
         .module('app')
         .factory('CRUDFactory', CRUDFactory);
 
-    CRUDfactory.$inject = ['$http', '$q'];
+    CRUDFactory.$inject = ['$http', '$q'];
 
     /* @ngInject */
-    function CRUDfactory($http, $q) {
+    function CRUDFactory($http, $q) {
        return function(endpoint, entityName) {
         var service = {
             getAll: getAll,
