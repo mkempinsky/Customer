@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
    livereload = require('gulp-livereload'),
    gutil = require('gulp-util'),
+   clean = require('gulp-clean'),
    connect = require('gulp-connect'),
    inject = require('gulp-inject'),
    browserSync = require('browser-sync').create(),
@@ -10,30 +11,27 @@ var jsSources = ['app/js/**/*.js'],
    cssSources = ['app/css/**/*.css'],
    htmlSources = ['app/**/*.html'];
 
-gulp.task('watch', ['browserSync'], function() {
+var paths = ['node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js','node_modules/angular-toastr/dist/angular-toastr.tpls.js', 'node_modules/angular-toastr/dist/angular-toastr.css', 'node_modules/bulma/css/bulma.css','./app/js/app.module.js', './app/js/**/*.js', './app/css/**/*.css'];
+
+gulp.task('watch', function() {
    gulp.watch(jsSources, ['js']);
    gulp.watch(cssSources, ['css']);
    gulp.watch(htmlSources, ['html']);
 });
 
-gulp.task('browserSync', function() {
-  browserSync.init({
-    server: {
-      baseDir: 'app',
-      routes: {
-        "./node_modules/":"node_modules"}
-    },
-  })
-})
+gulp.task('inject', function(){
+    var sources = gulp.src(['node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js', 'node_modules/angular-toastr/dist/angular-toastr.tpls.js', './app/**/*.module.js', './app/**/*.js', './app/**/*.css'], {read: false});
+    return gulp.src('./app/index.html')
+        .pipe(inject(sources, {relative: true}))
+        .pipe(gulp.dest('./app/'));
+});
 
-var paths = ['node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js','node_modules/angular-toastr/dist/angular-toastr.tpls.js', 'node_modules/angular-toastr/dist/angular-toastr.css', 'node_modules/bulma/css/bulma.css','./app/js/app.module.js', './app/**/*.js', './app/**/*.css'];
-
-gulp.task('inject', function() {
-   var sources = gulp.src(paths, { read: false });
-   return gulp.src('./app/index.html')
-       
-       .pipe(inject(sources, { relative: true }))
-       .pipe(gulp.dest('./app'));
+gulp.task('connect', function(){
+    return connect.server({
+        root: './',
+        livereload: true,
+        port: 8889
+    });
 });
 
 gulp.task('js', function() {
@@ -51,14 +49,4 @@ gulp.task('css', function() {
        .pipe(connect.reload())
 });
 
-gulp.task('libTransfer', ['clean'], function () {
-   return gulp.src(libs)
-   .pipe(gulp.dest('./app/lib'));
-});
-
-gulp.task('clean', function(){
-   return gulp.src('./app/lib/*.*', {read: false})
-   .pipe(clean());
-});
-
-gulp.task('serve', ['watch', 'libTransfer', 'inject', 'browserSync']);
+gulp.task('serve', ['watch', 'inject', 'connect']);

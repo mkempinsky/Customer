@@ -23,6 +23,7 @@
     "browser-sync": "^2.16.0",
     "bulma": "^0.1.2",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-connect": "^5.0.0",
     "gulp-inject": "^4.1.0",
     "gulp-livereload": "^3.8.1",
