@@ -1,8 +1,7 @@
 <table>
 	<thead>
 		<tr>
-			<th><h3>Restaurants</h3></th>
-			<th><button ui-sref="restaurants.detail.tabs.menu">Add Restaurant</button></th>
+			<th><h3>Restaurants</h3></th>	
 		</tr>
 	</thead>
 	<tbody>
@@ -14,6 +13,7 @@
 			<td>{{restaurant.email}}</td>
 			<td>{{restaurant.website}}</td>
 			<td>{{restaurant.description}}</td>
+			<td><button class="" ui-sref="restaurants.detail({restaurantId: restaurant.restaurantId})">Select</button></td>
 		</tr>
 	</tbody>
 </table>
