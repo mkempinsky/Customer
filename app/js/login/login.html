@@ -1,11 +1,32 @@
 <form ng-submit="login.loginCustomer(login.loginInfo)">
-	<div>
-		<label>Email</label>
-		<input type="text" placeholder="Enter your Email" ng-model="login.loginInfo.email">
-	</div>
-	<div>
-		<label>Password</label>
-		<input type="text" placeholder="Enter your password" ng-model="login.loginInfo.password">
-	</div>
-		<button type="submit">Enter</button>
+	<p class="control has-icon">
+		<!-- <label>Email</label> -->
+		<input  class="input" type="email" placeholder="Email" ng-model="login.loginInfo.email">
+		<i class="fa fa-envelope"></i>
+	</p>
+	<p class="control has-icon">
+		<!-- <label>Password</label> -->
+		<input class="input" type="password" placeholder="Password" ng-model="login.loginInfo.password">
+		<i class="fa fa-lock"></i>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-success">Login</button>
+	</p>
 </form>
+
+
+
+<!-- bulma sign-in sheet example -->
+<!-- <p class="control has-icon">
+  <input class="input" type="email" placeholder="Email">
+  <i class="fa fa-envelope"></i>
+</p>
+<p class="control has-icon">
+  <input class="input" type="password" placeholder="Password">
+  <i class="fa fa-lock"></i>
+</p>
+<p class="control">
+  <button class="button is-success">
+    Login
+  </button>
+</p> -->
