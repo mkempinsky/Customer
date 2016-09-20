@@ -1,0 +1,38 @@
+<h1>{{restaurantDetail.restaurant.name}}</h1>
+<!---->
+<div>
+	<table>
+		<tr >
+			<td>
+				
+			</td>
+		</tr>
+	</table>
+	
+</div>
+<!--Menu-->
+<div ng-repeat="menuGroup in restaurantDetail.menu">
+    <h1 class="header">{{menuGroup.menuGroup.menuGroupTitle}}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in menuGroup.menuItems">
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--Reviews-->
+<div>
+
+	
+
+</div>
