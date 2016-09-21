@@ -13,12 +13,13 @@
         vm.title = 'restaurantDetailController';
         vm.menu = {};
         vm.addToCart = addToCart;
+        vm.restaurantId = $stateParams.restaurantId;
         getMenu();
 
         ////////////////
 
         function getMenu() {
-            restaurantFactory.getById(2).then(
+            restaurantFactory.getById(vm.restaurantId).then(
             function(response) {
                 console.log(response);
                 vm.menu = response;
@@ -38,12 +39,10 @@
                 };
             },
             function(error){
-                console.log(error);
+            console.log(error);
             }
             );
         }
-
-
         function addToCart(item) {
             vm.cart.items.push(angular.copy(item));
         }

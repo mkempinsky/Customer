@@ -28,17 +28,15 @@
 	<table>
 		  <thead>
    	<tr>
-   		<td><b>Name</b></td>
    		<td><b>Description</b></td>
    		<td><b>Rating</b></td>
    	</tr>
 	
    </thead>
    <tbody>
-	    <tr ng-repeat="review in restaurantDetail.reviews">
-	        <td>{{review.name}}</td>
+	    <tr ng-repeat="review in restaurantDetail.menu.reviews">
 	        <td>{{review.reviewDescription}}</td>
-	        <td>{{review.rating}}</td>
+          <td>{{review.rating}}</td
 	    </tr>
    </tbody>
 	</table>
