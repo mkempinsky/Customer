@@ -13,6 +13,7 @@
         vm.title = 'restaurantDetailController';
         vm.menu = {};
         vm.addToCart = addToCart;
+        vm.restaurantId = $stateParams.restaurantId;
         getMenu();
 
         ////////////////
@@ -38,12 +39,10 @@
                 };
             },
             function(error){
-                console.log(error);
+            console.log(error);
             }
             );
         }
-
-
         function addToCart(item) {
             vm.cart.items.push(angular.copy(item));
         }

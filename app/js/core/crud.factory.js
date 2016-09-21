@@ -12,10 +12,10 @@
        return function(endpoint, entityName) {
         var service = {
             getAll: getAll,
-	        getById: getById,
-	        add: add,
-	        update: update,
-	        remove: remove
+  	        getById: getById,
+  	        add: add,
+  	        update: update,
+  	        remove: remove
         };
         return service;
 
