@@ -13,6 +13,7 @@
         vm.title = 'restaurantDetailController';
         vm.menu = {};
         vm.addToCart = addToCart;
+        vm.removeItem = removeItem;
         getMenu();
 
         ////////////////
@@ -22,7 +23,7 @@
             function(response) {
                 console.log(response);
                 vm.menu = response;
-                 vm.cart = {
+                vm.cart = {
                     cost: function() {
                         if(vm.cart.items.length) {
                             return vm.cart.items.map(function(item) {
@@ -47,5 +48,14 @@
         function addToCart(item) {
             vm.cart.items.push(angular.copy(item));
         }
+
+        function removeItem(item) {
+            var index = vm.cart.items.indexOf(item);
+            vm.cart.items.splice(index, 1);
+        }
     }
 })();
+
+// function removeItem(item) {
+//             vm.cart.items.splice(indexOf(item), 1);
+//         }
