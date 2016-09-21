@@ -18,7 +18,7 @@
         ////////////////
 
         function getMenu() {
-            restaurantFactory.getById(2).then(
+            restaurantFactory.getById($stateParams.restaurantId).then(
             function(response) {
                 console.log(response);
                 vm.menu = response;
