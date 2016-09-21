@@ -4,7 +4,7 @@ var gulp = require('gulp'),
    clean = require('gulp-clean'),
    connect = require('gulp-connect'),
    inject = require('gulp-inject'),
-   browserSync = require('browser-sync').create(),
+   wiredep = require('wiredep').stream,
    open = require('gulp-open');
 
 var jsSources = ['app/js/**/*.js'],
@@ -20,19 +20,35 @@ gulp.task('watch', function() {
 });
 
 gulp.task('inject', function(){
-    var sources = gulp.src(['node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js', 'node_modules/angular-toastr/dist/angular-toastr.tpls.js', './app/**/*.module.js', './app/**/*.js', './app/**/*.css'], {read: false});
+    var sources = gulp.src(paths, {read: false});
     return gulp.src('./app/index.html')
+        .pipe(wiredep())
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./app/'));
 });
 
 gulp.task('connect', function(){
     return connect.server({
-        root: './',
-        livereload: true,
-        port: 8889
+        root: './app',
+        livereload: true
     });
 });
+
+gulp.task('app', function () {
+  var browser;
+  if(process.platform === 'darwin'){
+    browser = "Google Chrome"
+  }else{
+    browser = 'chrome'
+  }
+
+  var options = {
+    uri: "http://localhost:8080",
+    app: browser
+  };
+  gulp.src('./app/index.html')
+    .pipe(open(options));
+})
 
 gulp.task('js', function() {
    gulp.src(jsSources)
@@ -49,4 +65,4 @@ gulp.task('css', function() {
        .pipe(connect.reload())
 });
 
-gulp.task('serve', ['watch', 'inject', 'connect']);
+gulp.task('serve', ['connect', 'watch', 'inject', 'app']);
