@@ -30,7 +30,6 @@ gulp.task('connect', function(){
     return connect.server({
         root: './',
         livereload: true,
-        port: 8889
     });
 });
 
@@ -47,6 +46,23 @@ gulp.task('html', function() {
 gulp.task('css', function() {
    gulp.src(cssSources)
        .pipe(connect.reload())
+});
+
+gulp.task('app', function() {
+    var browser;
+    if (process.platform === 'darwin') {
+        browser = 'Google Chrome'
+    } 
+    else {
+
+        browser = 'chrome'
+    }
+    var options = {
+        uri: 'http://localhost:8080',
+        app: browser
+    };
+    gulp.src('./app/index.html')
+        .pipe(open(options));
 });
 
 gulp.task('serve', ['watch', 'inject', 'connect']);
