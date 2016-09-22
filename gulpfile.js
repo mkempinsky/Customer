@@ -11,7 +11,7 @@ var jsSources = ['app/js/**/*.js'],
    cssSources = ['app/css/**/*.css'],
    htmlSources = ['app/**/*.html'];
 
-var paths = ['node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js','node_modules/angular-toastr/dist/angular-toastr.tpls.js', 'node_modules/angular-toastr/dist/angular-toastr.css', 'node_modules/bulma/css/bulma.css','./app/js/app.module.js', './app/js/**/*.js', './app/css/**/*.css'];
+var paths = ['./app/js/app.module.js', './app/js/**/*.js', './app/css/**/*.css'];
 
 gulp.task('watch', function() {
    gulp.watch(jsSources, ['js']);
@@ -34,22 +34,6 @@ gulp.task('connect', function(){
     });
 });
 
-gulp.task('app', function () {
-  var browser;
-  if(process.platform === 'darwin'){
-    browser = "Google Chrome"
-  }else{
-    browser = 'chrome'
-  }
-
-  var options = {
-    uri: "http://localhost:8080",
-    app: browser
-  };
-  gulp.src('./app/index.html')
-    .pipe(open(options));
-})
-
 gulp.task('js', function() {
    gulp.src(jsSources)
        .pipe(connect.reload())
@@ -65,4 +49,22 @@ gulp.task('css', function() {
        .pipe(connect.reload())
 });
 
+gulp.task('app', function() {
+    var browser;
+    if (process.platform === 'darwin') {
+        browser = 'Google Chrome'
+    } 
+    else {
+
+        browser = 'chrome'
+    }
+    var options = {
+        uri: 'http://localhost:8080',
+        app: browser
+    };
+    gulp.src('./app/index.html')
+        .pipe(open(options));
+});
+
 gulp.task('serve', ['connect', 'watch', 'inject', 'app']);
+

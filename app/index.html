@@ -3,43 +3,49 @@
 <head>
 	<meta charset="UTF-8">
 	<title>NoshSpot - Customer</title>
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+	<link rel="stylesheet" href="bower_components/bulma/css/bulma.css" />
+	<!-- endbower -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/custom.css">
 	<!-- endinject -->
 </head>
 <body>
-	<nav class="nav">
+    <nav class="nav">
         <div class="nav-left">
-            <a id="navName" class="nav-item is-brand" >
+            <a id="navName" class="nav-item is-brand">
                     NoshSpot
-            </a>
+                </a>
         </div>
-
         <span class="nav-toggle">
             <span></span>
         <span></span>
         <span></span>
         </span>
         <div class="nav-right nav-menu">
-            <a class="nav-item nav-link" ui-sref="restaurants.list">Restuarants</a>
+            <a class="nav-item nav-link" ui-sref="restaurants.list">Restaurant</a>
+            <a class="nav-item nav-link" ui-sref="orders">Orders History</a>
         </div>
     </nav>
-    <hr>
+    <br>
 	<main>
 		<div ui-view></div>
 	</main>
+	<!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
 	<!-- inject:js -->
-	<script src="../node_modules/angular/angular.js"></script>
-	<script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
-	<script src="../node_modules/angular-toastr/dist/angular-toastr.js"></script>
-	<script src="../node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
 	<script src="js/app.module.js"></script>
+	<script src="js/login/login.controller.js"></script>
 	<script src="js/core/crud.factory.js"></script>
 	<script src="js/core/customer.factory.js"></script>
 	<script src="js/core/restaurant.factory.js"></script>
 	<script src="js/core/review.factory.js"></script>
 	<script src="js/orders/orders.controller.js"></script>
-	<script src="js/login/login.controller.js"></script>
 	<script src="js/restaurant/restaurant.detail.controller.js"></script>
 	<script src="js/restaurant/restaurant.list.controller.js"></script>
 	<!-- endinject -->

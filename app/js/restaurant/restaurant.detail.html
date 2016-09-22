@@ -1,72 +1,82 @@
-<h1>{{restaurantDetail.menu.name}}</h1>
+<div class="container is-fluid">
+    <div class="columns">
+        <div class="column">
+            <h1>{{restaurantDetail.menu.name}}</h1>
 
-<!--MENU-->
-<h2>Menu</h2>
-<div ng-repeat="menuGroup in restaurantDetail.menu.menuGroups">
-    <h3 class="header">{{menuGroup.menuGroupTitle}}</h3>
-    <table class="table">
-         <thead>
-            <tr>
-                <td><b>Name</b></td>
-                <td><b>Description</b></td>
-                <td><b>Price</b></td>
-            </tr>
-        </thead> 
-        <tbody>
-            <tr ng-repeat="item in menuGroup.menuItems">
-                <td>{{item.name}}</td>
-                <td>{{item.description}}</td>
-                <td>{{item.price}}</td>
-                	<td><button class="" ng-click="restaurantDetail.addToCart(item)">Add To Cart</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<!-- REVIEWS -->
-<h2>Reviews</h2>
-	<table>
-		  <thead>
-   	<tr>
-   		<td><b>Description</b></td>
-   		<td><b>Rating</b></td>
-   	</tr>
-	
-   </thead>
-   <tbody>
-	    <tr ng-repeat="review in restaurantDetail.menu.reviews">
-	        <td>{{review.reviewDescription}}</td>
-          <td>{{review.rating}}</td
-	    </tr>
-   </tbody>
-	</table>
- 
+            <!--MENU-->
+            <h2>Menu</h2>
+            <div ng-repeat="menuGroup in restaurantDetail.menu.menuGroups">
+                <h3 class="header">{{menuGroup.menuGroupTitle}}</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td><b>Description</b></td>
+                            <td><b>Price</b></td>
+                            <th width="10%"></th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        <tr ng-repeat="item in menuGroup.menuItems">
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.price | currency: '$'}}</td>
+                            <td><button class="" ng-click="restaurantDetail.addToCart(item)">Add To Cart</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 <!-- CART -->
-<div>
-	<h2>Cart</h2>
-	<table>
-	<thead>
-	   	<tr>
-	   		<td><b>Name</b></td>
-	   		<td><b>Price</b></td>
-	   	</tr>
-   </thead>
-   <tbody>
-   		<tr ng-repeat= "item in restaurantDetail.cart.items">
-   			<td>{{item.name}}</td>
-   			<td>{{item.price}}</td>	
-   			<td><button ng-click="restaurantDetail.removeItem(item)">Remove</button></td>
-   		</tr>
-   </tbody>
-	
-	</table>
+    <div class="columns">
+        <div class="column">
+            <h2>Cart</h2>
+            <table class="table is-striped">
+                <thead>
+                    <tr>
+                        <th><b>Name</b></th>
+                        <th><b>Price</b></th>
+                        <th width="1%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat= "item in restaurantDetail.cart.items">
+                        <td>{{item.name}}</td>
+                        <td>{{item.price | currency}}</td>  
+                        <td><button ng-click="restaurantDetail.removeItem(item)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table> 
+            <div>Cost: {{restaurantDetail.cart.cost() | currency: '$'}}</div>
+            <button class="">Checkout</button>
+        </div>
+    </div>
 
 
-   
+<!-- REVIEWS -->
+    <div class="columns">
+        <div class="column">
+            <h2>Reviews</h2>
+            <table class="table is-striped">
+                <thead>
+               	    <tr>
+                        <th><b>Description</b></th>
+                        <th><b>Rating</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="review in restaurantDetail.menu.reviews">
+                        <td>{{review.reviewDescription}}</td>
+                        <td>{{review.rating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 
-<div>Cost: {{restaurantDetail.cart.cost() | currency: '$'}}</div>
-<button class="">Checkout</button>
 	
 
