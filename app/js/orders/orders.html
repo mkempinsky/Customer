@@ -1,15 +1,22 @@
-<table>
-	<thead>
-		<tr>
-			<th>Recent Orders</th>
-		</tr>
-			<th>Order Total</th>
-	</thead>
-	<tbody>
-		<tr ng-repeat="data in orders.details.orders">
-			<td>{{data.orderTotal}}</td>
-		</tr>
-		
-	</tbody>
-</table>
-
+<div class="container">
+	<div class="columns">
+		<div class="column">
+			<table class="table is-striped">
+				<thead>
+					<tr>
+						<th>Recent Restaurants</th>
+						<th>Paid</th>
+						<th width="1%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="order in orders.details.orders">
+						<td>{{order.restaurant.name}}</td>
+						<td>{{order.orderTotal | currency: '$'}}</td>
+						<td><button>Buy</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
