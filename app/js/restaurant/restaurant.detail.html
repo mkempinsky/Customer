@@ -50,10 +50,32 @@
                 </tbody>
             </table> 
             <div>Cost: {{restaurantDetail.cart.cost() | currency: '$'}}</div>
-            <button class="">Checkout</button>
+            <button class="button is-medium"
+              stripe-checkout="restaurantDetail.doCheckout"
+              data-key="pk_test_XE4OKSyJR5b8YXIX41XXEsN6"
+              data-name="NoshSpot"
+              data-description="NoshSpot Food Order"
+              data-amount="{{restaurantDetail.cart.cost() * 100}}">Checkout</button>
         </div>
     </div>
 
+<div>
+	<h2>Cart</h2>
+	<table>
+	<thead>
+	   	<tr>
+	   		<td><b>Name</b></td>
+	   		<td><b>Price</b></td>
+	   	</tr>
+   </thead>
+   <tbody>
+   		<tr ng-repeat= "item in restaurantDetail.cart.items">
+   			<td>{{item.name}}</td>
+   			<td>{{item.price}}</td>	
+   			<td><button ng-click="restaurantDetail.removeItem(item)">Remove</button></td>
+   		</tr>
+   </tbody>
+	</table>
 
 <!-- REVIEWS -->
     <div class="columns">

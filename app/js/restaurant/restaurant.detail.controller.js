@@ -5,16 +5,17 @@
         .module('app')
         .controller('RestaurantDetailController', RestaurantDetailController);
 
-    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory'];
+    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'StripePaymentFactory'];
 
     /* @ngInject */
-    function RestaurantDetailController($stateParams, $state, restaurantFactory) {
+    function RestaurantDetailController($stateParams, $state, restaurantFactory, StripePaymentFactory) {
         var vm = this;
         vm.title = 'restaurantDetailController';
         vm.menu = {};
         vm.addToCart = addToCart;
         vm.restaurantId = $stateParams.restaurantId;
         vm.removeItem = removeItem;
+        vm.doCheckout = doCheckout;
         getMenu();
 
         ////////////////
@@ -22,7 +23,6 @@
         function getMenu() {
             restaurantFactory.getById($stateParams.restaurantId).then(
             function(response) {
-                console.log(response);
                 vm.menu = response;
                 vm.cart = {
                     cost: function() {
@@ -51,6 +51,24 @@
         function removeItem(item) {
             var index = vm.cart.items.indexOf(item);
             vm.cart.items.splice(index, 1);
+        }
+
+        function doCheckout(token) {
+            var payInfo = {
+                "token": token.id,
+                "orderAmount": parseInt(vm.cart.cost() * 100),
+                "description": vm.menu.name
+            };
+
+            StripePaymentFactory.add(payInfo)
+                .then(function(data){
+                    vm.allRestaurants = data;
+                    console.log(vm.allRestaurants);
+                 },
+                 function(error){
+                    console.log(error);
+                 }
+            );
         }
     }
 })();
