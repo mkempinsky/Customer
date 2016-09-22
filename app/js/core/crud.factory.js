@@ -21,19 +21,19 @@
 
         ////////////////
 
-         function getAll() {
-        var deferred = $q.defer();
+        function getAll() {
+          var deferred = $q.defer();
 
-        $http.get(endpoint)
-          .success(function(data) {
-            deferred.resolve(data);
-          })
-          .error(function(error) {
-            console.log(error);
-            deferred.reject('There was a problem fetching ' + entityName.toLowerCase() + 's.');
-          });
+          $http.get(endpoint)
+            .success(function(data) {
+              deferred.resolve(data);
+            })
+            .error(function(error) {
+              console.log(error);
+              deferred.reject('There was a problem fetching ' + entityName.toLowerCase() + 's.');
+            });
 
-        return deferred.promise;
+          return deferred.promise;
       }
 
       function getById(id) {

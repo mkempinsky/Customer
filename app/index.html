@@ -33,18 +33,24 @@
 	<main>
 		<div ui-view></div>
 	</main>
-	<!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- endbower -->
+
+  <!-- stripe CDN -->
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-stripe-checkout/angular-stripe-checkout.js"></script>
+  <!-- endbower -->
+
 	<!-- inject:js -->
 	<script src="js/app.module.js"></script>
-	<script src="js/login/login.controller.js"></script>
 	<script src="js/core/crud.factory.js"></script>
 	<script src="js/core/customer.factory.js"></script>
 	<script src="js/core/restaurant.factory.js"></script>
 	<script src="js/core/review.factory.js"></script>
+	<script src="js/core/stripePayment.factory.js"></script>
+	<script src="js/login/login.controller.js"></script>
 	<script src="js/orders/orders.controller.js"></script>
 	<script src="js/restaurant/restaurant.detail.controller.js"></script>
 	<script src="js/restaurant/restaurant.list.controller.js"></script>
