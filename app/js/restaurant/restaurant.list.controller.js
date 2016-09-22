@@ -16,15 +16,15 @@
 
 /*************************************************************************/
 		function getAllRestaurants(){
-			restaurantFactory.getAll()
-							 .then(function(data){
-							 	vm.allRestaurants = data;
-							 	console.log(vm.allRestaurants);
-							 },
-							 function(error){
-
-							 }
-						);
+			restaurantFactory.getAll().then(
+				function(data){
+					vm.allRestaurants = data;
+					console.log(vm.allRestaurants);
+				},
+				function(error){
+					console.log(error);
+				}
+			);
 		}	
 	}
 })();
