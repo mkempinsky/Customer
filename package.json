@@ -17,17 +17,13 @@
   },
   "homepage": "https://github.com/NoshSpot/Customer#readme",
   "devDependencies": {
-    "angular": "^1.5.8",
-    "angular-toastr": "^2.1.1",
-    "angular-ui-router": "^1.0.0-beta.2",
-    "browser-sync": "^2.16.0",
-    "bulma": "^0.1.2",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-connect": "^5.0.0",
     "gulp-inject": "^4.1.0",
     "gulp-livereload": "^3.8.1",
     "gulp-open": "^2.0.0",
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.7",
+    "wiredep": "^4.0.0"
   }
 }

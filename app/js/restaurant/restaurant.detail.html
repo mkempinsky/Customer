@@ -1,78 +1,100 @@
-<h1>{{restaurantDetail.menu.name}}</h1>
-
-<!--MENU-->
-<h2>Menu</h2>
-<div ng-repeat="menuGroup in restaurantDetail.menu.menuGroups">
-    <h3 class="header">{{menuGroup.menuGroupTitle}}</h3>
-    <table class="table">
-         <thead>
-            <tr>
-                <td><b>Name</b></td>
-                <td><b>Description</b></td>
-                <td><b>Price</b></td>
-            </tr>
-        </thead> 
-        <tbody>
-            <tr ng-repeat="item in menuGroup.menuItems">
-                <td>{{item.name}}</td>
-                <td>{{item.description}}</td>
-                <td>{{item.price}}</td>
-                	<td><button class="" ng-click="restaurantDetail.addToCart(item)">Add To Cart</button></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container is-fluid">
+    <div class="columns">
+        <div class="column">
+            <h1>{{restaurantDetail.menu.name}}</h1>
+            <!--MENU-->
+            <h2>Menu</h2>
+            <div ng-repeat="menuGroup in restaurantDetail.menu.menuGroups">
+                <h3 class="header">{{menuGroup.menuGroupTitle}}</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td><b>Description</b></td>
+                            <td><b>Price</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in menuGroup.menuItems">
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.price}}</td>
+                            <td>
+                                <button class="" ng-click="restaurantDetail.addToCart(item)">Add To Cart</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- REVIEWS -->
+            <h2>Reviews</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <td><b>Description</b></td>
+                        <td><b>Rating</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="review in restaurantDetail.menu.reviews">
+                        <td>{{review.reviewDescription}}</td>
+                        <td>{{review.rating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="control">
+                <h2>Write a review</h2>
+                <textarea class="textarea" ng-model="restaurantDetail.newReviewDescription"></textarea>
+                <input type="number" ng-model="restaurantDetail.newReviewRating" />
+            </div>
+            <button ng-click="restaurantDetail.addReview()">Submit</button>
+            >>>>>>> f1bda9d88cc91f56d0faba8aced6453c7a9285f0
+            <!-- CART -->
+            <div class="columns">
+                <div class="column">
+                    <h2>Cart</h2>
+                    <table class="table is-striped">
+                        <thead>
+                            <tr>
+                                <th><b>Name</b></th>
+                                <th><b>Price</b></th>
+                                <th width="1%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in restaurantDetail.cart.items">
+                                <td>{{item.name}}</td>
+                                <td>{{item.price | currency}}</td>
+                                <td>
+                                    <button ng-click="restaurantDetail.removeItem(item)">Remove</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>Cost: {{restaurantDetail.cart.cost() | currency: '$'}}</div>
+                    <button class="button is-medium" stripe-checkout="restaurantDetail.doCheckout" data-key="pk_test_XE4OKSyJR5b8YXIX41XXEsN6" data-name="NoshSpot" data-description="NoshSpot Food Order" data-amount="{{restaurantDetail.cart.cost() * 100}}">Checkout</button>
+                </div>
+            </div>
+            <div>
+                <h2>Cart</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td><b>Price</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in restaurantDetail.cart.items">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>
+                                <button ng-click="restaurantDetail.removeItem(item)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-
-<!-- REVIEWS -->
-<h2>Reviews</h2>
-	<table>
-		  <thead>
-   	<tr>
-   		<td><b>Description</b></td>
-   		<td><b>Rating</b></td>
-   	</tr>
-	
-   </thead>
-   <tbody>
-	    <tr ng-repeat="review in restaurantDetail.menu.reviews">
-	        <td>{{review.reviewDescription}}</td>
-          <td>{{review.rating}}</td>
-	    </tr>
-   </tbody>
-	</table>
-
-  <div class="control">
-      <h2>Write a review</h2>
-      <textarea class="textarea" ng-model="restaurantDetail.newReviewDescription"></textarea>
-      <input type="number" ng-model="restaurantDetail.newReviewRating"/>
-  </div>
-  <button ng-click="restaurantDetail.addReview()">Submit</button>
-
-<!-- CART -->
-<div>
-	<h2>Cart</h2>
-	<table>
-	<thead>
-	   	<tr>
-	   		<td><b>Name</b></td>
-	   		<td><b>Price</b></td>
-	   	</tr>
-   </thead>
-   <tbody>
-   		<tr ng-repeat= "item in restaurantDetail.cart.items">
-   			<td>{{item.name}}</td>
-   			<td>{{item.price}}</td>	
-   			<td><button ng-click="restaurantDetail.removeItem(item)">Remove</button></td>
-   		</tr>
-   </tbody>
-	
-	</table>
-
-
-   
-</div>
-
-<div>Cost: {{restaurantDetail.cart.cost() | currency: '$'}}</div>
-<button class="">Checkout</button>
-	
-
