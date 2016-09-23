@@ -83,9 +83,15 @@
                 };
 
                 StripePaymentFactory.add(payInfo)
-                    .then(function(data){
+                    .then(function(stripePaymentData){
                         vm.allRestaurants = data;
                         console.log(vm.allRestaurants);
+                        PaymentFactory.add({
+                            orderId: data.orderId,
+                            customerId: $stateParams.customerId,
+                            paymentDate: new Date(),
+                            paymentAmount: stripePaymentData.amount
+                        });
                      },
                      function(error){
                         console.log(error);
