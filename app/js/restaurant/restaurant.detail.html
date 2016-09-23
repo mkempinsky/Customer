@@ -36,11 +36,17 @@
    <tbody>
 	    <tr ng-repeat="review in restaurantDetail.menu.reviews">
 	        <td>{{review.reviewDescription}}</td>
-          <td>{{review.rating}}</td
+          <td>{{review.rating}}</td>
 	    </tr>
    </tbody>
 	</table>
- 
+
+  <div class="control">
+      <h2>Write a review</h2>
+      <textarea class="textarea" ng-model="restaurantDetail.newReviewDescription"></textarea>
+      <input type="number" ng-model="restaurantDetail.newReviewRating"/>
+  </div>
+  <button ng-click="restaurantDetail.addReview()">Submit</button>
 
 <!-- CART -->
 <div>

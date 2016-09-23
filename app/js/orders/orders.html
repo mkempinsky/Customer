@@ -7,9 +7,8 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="data in orders.details.orders">
-			<td>{{data.orderTotal}}</td>
+			<td>{{data.orderTotal | currency}}</td>
 		</tr>
-		
 	</tbody>
 </table>
 
