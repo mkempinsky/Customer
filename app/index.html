@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="bower_components/bulma/css/bulma.css" />
 	<!-- endbower -->
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/custom.css">
 	<!-- endinject -->
@@ -15,7 +17,7 @@
 <body>
     <nav class="nav">
         <div class="nav-left">
-            <a id="navName" class="nav-item is-brand">
+            <a id="navName" class="nav-item is-brand" href="#">
                     NoshSpot
                 </a>
         </div>
@@ -29,10 +31,20 @@
             <a class="nav-item nav-link" ui-sref="orders">Orders History</a>
         </div>
     </nav>
-    <br>
+
 	<main>
 		<div ui-view></div>
 	</main>
+
+	 <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+              <p>
+                <strong>NoshSpot Creators:</strong> Dreu Stepanik, Michele Kempinsky, Ryan Dowdy, Herberto Basulto, Cole Logan, Jason Land, Reggie Sibbley, Christian Nagal, Vincent Duong
+              </p>
+            </div>
+        </div>
+    </footer>
 
   <!-- stripe CDN -->
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
@@ -45,8 +57,6 @@
 
 	<!-- inject:js -->
 	<script src="js/app.module.js"></script>
-	<script src="js/orders/orders.controller.js"></script>
-	<script src="js/login/login.controller.js"></script>
 	<script src="js/core/crud.factory.js"></script>
 	<script src="js/core/customer.factory.js"></script>
 	<script src="js/core/order.factory.js"></script>
@@ -55,6 +65,8 @@
 	<script src="js/core/restaurant.factory.js"></script>
 	<script src="js/core/review.factory.js"></script>
 	<script src="js/core/stripePayment.factory.js"></script>
+	<script src="js/login/login.controller.js"></script>
+	<script src="js/orders/orders.controller.js"></script>
 	<script src="js/restaurant/restaurant.detail.controller.js"></script>
 	<script src="js/restaurant/restaurant.list.controller.js"></script>
 	<!-- endinject -->
