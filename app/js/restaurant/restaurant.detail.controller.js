@@ -5,10 +5,10 @@
         .module('app')
         .controller('RestaurantDetailController', RestaurantDetailController);
 
-    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'StripePaymentFactory'];
+    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'OrderFactory', 'OrderItemFactory', 'StripePaymentFactory'];
 
     /* @ngInject */
-    function RestaurantDetailController($stateParams, $state, restaurantFactory, StripePaymentFactory) {
+    function RestaurantDetailController($stateParams, $state, restaurantFactory, OrderFactory, OrderItemFactory, StripePaymentFactory) {
         var vm = this;
         vm.title = 'restaurantDetailController';
         vm.menu = {};
@@ -54,21 +54,43 @@
         }
 
         function doCheckout(token) {
-            var payInfo = {
-                "token": token.id,
-                "orderAmount": parseInt(vm.cart.cost() * 100),
-                "description": vm.menu.name
+            // create order in database
+            // create order items in database
+            // pay in stripe
+            // add payment to database
+            var order = {
+                restaurantId: $stateParams.restaurantId,
+                customerId: 20,
+                timeStamp: new Date()
             };
 
-            StripePaymentFactory.add(payInfo)
-                .then(function(data){
-                    vm.allRestaurants = data;
-                    console.log(vm.allRestaurants);
-                 },
-                 function(error){
-                    console.log(error);
-                 }
-            );
+            OrderFactory.add(order).then(function(data) {
+                for(var i = 0; i < vm.cart.items.length; i++) {
+                    var item = vm.cart.items[i];
+                    
+                    var orderItem = {
+                        menuItemId: item.menuItemId,
+                        orderId: data.orderId
+                    };
+                    OrderItemFactory.add(orderItem);
+                }
+
+                var payInfo = {
+                    "token": token.id,
+                    "orderAmount": parseInt(vm.cart.cost() * 100),
+                    "description": vm.menu.name
+                };
+
+                StripePaymentFactory.add(payInfo)
+                    .then(function(data){
+                        vm.allRestaurants = data;
+                        console.log(vm.allRestaurants);
+                     },
+                     function(error){
+                        console.log(error);
+                     }
+                );
+            });
         }
     }
 })();
