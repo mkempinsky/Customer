@@ -37,26 +37,12 @@
                 controller: 'LoginController as login',
                 templateUrl: 'js/login/login.html'
             })
-<<<<<<< HEAD
             .state('orders', {
-                url: '/orders',
+                url: '/orders?customerId', 
                 controller: 'OrdersController as orders',
                 templateUrl: 'js/orders/orders.html'
-            })
-
-=======
-        .state('login', {
-            url: '/login',  
-            controller: 'LoginController as login',
-            templateUrl: 'js/login/login.html'  
-        })
-        .state('orders', {
-            url: '/orders?customerId', 
-            controller: 'OrdersController as orders',
-            templateUrl: 'js/orders/orders.html'
-        });
+            });
             
->>>>>>> 604b1348a20810b0aa44e8eacd650848e6ad1dee
     }
 
 })();
