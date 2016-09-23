@@ -12,6 +12,7 @@
 
 		vm.allRestaurants = [];
 		vm.restaurantId = $stateParams.restaurantId;
+		vm.customerId = $stateParams.customerId;
 		getAllRestaurants();
 
 /*************************************************************************/

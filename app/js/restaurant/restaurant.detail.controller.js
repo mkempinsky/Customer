@@ -12,8 +12,12 @@
         var vm = this;
         vm.title = 'restaurantDetailController';
         vm.menu = {};
+        vm.newReviewDescription = "";
+        vm.newReviewRating;
+        vm.addReview = addReview;
         vm.addToCart = addToCart;
         vm.restaurantId = $stateParams.restaurantId;
+
         vm.removeItem = removeItem;
         vm.doCheckout = doCheckout;
         getMenu();
@@ -44,8 +48,29 @@
             }
             );
         }
+
+        ////////////////
+
         function addToCart(item) {
             vm.cart.items.push(angular.copy(item));
+        }
+
+        ////////////////
+
+        function addReview () {
+            vm.newReview = {
+                //No customer id at ALL on this site//
+                customerId: 3,
+                restaurantId: $stateParams.restaurantId,
+                reviewDescription: vm.newReviewDescription,
+                rating: vm.newReviewRating
+            };
+            reviewFactory.add(vm.newReview).then(
+                function(){
+                    alert('Review added');
+                    console.log(vm.newReview);
+                }
+                );
         }
 
         function removeItem(item) {

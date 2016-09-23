@@ -5,15 +5,27 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$state', '$stateParams'];
+    LoginController.$inject = ['$state', '$stateParams', 'customerFactory'];
 
     /* @ngInject */
-    function LoginController($state, $stateParams) {
+    function LoginController($state, $stateParams, customerFactory) {
         var vm = this;
         vm.title = 'LoginController';
         vm.loginInfo = {};
         vm.loginCustomer = loginCustomer;
+        vm.customers;
+
+        allCustomers();
         ////////////////
+
+        function allCustomers() {
+            customerFactory.getAll().then(
+                function(data){
+                    vm.customers = data;
+                }
+            );
+        }
+
 
         function loginCustomer() {
         	if(vm.loginInfo.password != 'butts') {
@@ -21,7 +33,7 @@
         	}
         	else
         	{
-        		$state.go('restaurants.list');
+        		$state.go('restaurants.list', {customerId: vm.selectedCustomer});
         	}
         }
     }
