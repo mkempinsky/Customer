@@ -4,16 +4,28 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Recent Restaurants</th>
+						<th>Date</th>
+						<th>Restaurants</th>
+						<th>Order</th>
 						<th>Paid</th>
 						<th width="1%"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="order in orders.details.orders">
+						<td>{{order.timeStamp | date: 'short'}}</td>
 						<td>{{order.restaurant.name}}</td>
+						<td>
+							<ul>
+								<li ng-repeat="items in order.orderItems">
+									{{items.menuItem.name}} - {{items.menuItem.price | currency: '$'}}
+								</li>
+							</ul>
+						</td>
 						<td>{{order.orderTotal | currency: '$'}}</td>
-						<td><button>Buy</button></td>
+						<td><button class="button"
+								  ng-click="orders.doCheckout(order)">
+					              Buy</button></td>
 					</tr>
 				</tbody>
 			</table>

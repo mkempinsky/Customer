@@ -15,21 +15,63 @@
                 <label class="modal-trigger-label" for="modalTrigger">&#10006;</label>
                   <div>
                     <form ng-submit="login.loginCustomer()">
-                    	<div class="select is-fullwidth">
-                         	<select ng-model="login.selectedCustomer" ng-options="customer.customerId as customer.firstName for customer in login.customers">
-                                <option value="" disabled>Select a Customer...</option>
-                            </select>
-                        </div>
-                    	<p class="control has-icon">
-                    		<!-- <label>Password</label> -->
-                    		<input class="input" type="password" placeholder="Password" ng-model="login.loginInfo.password">
-                    		<i class="fa fa-lock"></i>
-                    	</p>
-                    	<p class="control">
-                    		<button type="submit" class="button is-success">Login</button>
-                    	</p>
+                      <div class="select is-fullwidth">
+                      <select ng-model="login.selectedCustomer" ng-options="customer.customerId as customer.firstName for customer in login.customers">
+                       <option value="" disabled>Select a Customer...</option>
+                      </select>
+                      </div>
+                      <p class="control has-icon">
+                      <!-- <label>Password</label> -->
+                        <input class="input" type="password" placeholder="Password" ng-model="login.loginInfo.password">
+                        <i class="fa fa-lock"></i>
+                      </p>
+                      <p class="control">
+                        <button type="submit" class="button is-success">Login</button>
+                          <a class="button is-success" ng-click="login.expand = !login.expand">New Customer</a>
+                      </p>
                     </form>
                   </div>
+              </div>
+              <div class="columns" ng-show="login.expand">
+                <div class="column">
+                  <form  ng-submit="login.addNewCustomer(login.newCustomer)">
+                    <label class="label">Password</label>
+                    <p class="control">
+                      <input class="input" type="password" ng-model="login.password">
+                    </p>
+                    <label class="label">Confirm Password</label>
+                    <p class="control">
+                      <input class="input" type="password" ng-model="login.confirmPassword">
+                    </p>
+                    <label class="label">First Name</label>
+                    <p class="control">
+                      <input class="input" type="text" ng-model="login.newCustomer.firstName">
+                    </p>
+                    <label class="label">Last Name</label>
+                    <p class="control">
+                      <input class="input" type="text" ng-model="login.newCustomer.lastName">
+                    </p>
+                    <label class="label">Address</label>
+                    <p class="control">
+                      <input class="input" type="text" ng-model="login.newCustomer.address">
+                    </p>
+                    <label class="label">Zip Code</label>
+                    <p class="control">
+                      <input class="input" type="text" ng-model="login.newCustomer.zipCode">
+                    </p>
+                    <label class="label">Telephone</label>
+                    <p class="control">
+                      <input class="input" type="text" ng-model="login.newCustomer.telephone">
+                    </p>
+                    <label class="label">Email</label>
+                    <p class="control">
+                      <input class="input" type="text" ng-model="login.newCustomer.email">
+                    </p>
+                    <p class="control">
+                      <button class="button is-success" type="submit">Submit</button>
+                    </p>
+                  </form>
+                </div>
               </div>
           </div>
       </div>
@@ -179,7 +221,6 @@
     </div>
   </div>
 </section>
-
 
 
 <!-- bulma sign-in sheet example -->

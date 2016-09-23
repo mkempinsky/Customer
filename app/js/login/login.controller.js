@@ -12,8 +12,12 @@
         var vm = this;
         vm.title = 'LoginController';
         vm.loginInfo = {};
-        vm.loginCustomer = loginCustomer;
         vm.customers;
+        vm.newCustomer = {};
+        vm.expand = false;
+
+        vm.loginCustomer = loginCustomer;
+        vm.addNewCustomer = addNewCustomer;
 
         allCustomers();
         ////////////////
@@ -26,6 +30,22 @@
             );
         }
 
+        function addNewCustomer(newCustomer){
+            if (vm.password === vm.confirmPassword) {
+                customerFactory.add(newCustomer).then(
+                    function(data){
+                        console.log(data);
+                        $state.go('restaurants.list', {customerId: data.customerId});
+                    },
+                    function(error){
+                        console.log(error);
+                    }
+                );
+            }
+            else {
+                alert("Passwords do not match");
+            }
+        }
 
         function loginCustomer() {
         	if(vm.loginInfo.password != 'butts') {
