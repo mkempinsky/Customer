@@ -1,9 +1,9 @@
-<form ng-submit="login.loginCustomer(login.loginInfo)">
-	<p class="control has-icon">
-		<!-- <label>Email</label> -->
-		<input  class="input" type="email" placeholder="Email" ng-model="login.loginInfo.email">
-		<i class="fa fa-envelope"></i>
-	</p>
+<form ng-submit="login.loginCustomer()">
+	<div class="select is-fullwidth">
+     	<select ng-model="login.selectedCustomer" ng-options="customer.customerId as customer.firstName for customer in login.customers">
+            <option value="" disabled>Select a Customer...</option>
+        </select>
+    </div>
 	<p class="control has-icon">
 		<!-- <label>Password</label> -->
 		<input class="input" type="password" placeholder="Password" ng-model="login.loginInfo.password">
