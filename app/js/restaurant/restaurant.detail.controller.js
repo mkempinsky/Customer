@@ -58,6 +58,7 @@
 
         function addReview () {
             vm.newReview = {
+                //No customer id at ALL on this site//
                 customerId: 3,
                 restaurantId: $stateParams.restaurantId,
                 reviewDescription: vm.newReviewDescription,
