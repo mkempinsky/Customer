@@ -1,3 +1,250 @@
-body{
-	background-color: lightblue;
+/*====================================
+  		Modal Window styles
+=====================================*/
+.modal {
+  background: transparent;
+  display: inline;
+  position: relative;
+}
+
+.modal-login-button {
+	margin-top: 2%;
+	box-shadow: 0px 5px 8px #000;
+	background-color: #697f7f;
+	color: #fff;
+	border: none;
+}
+
+@media (min-width: 40px) {
+  .modal {
+    padding: 1.5em;
+  }
+}
+.modal-overlay {
+  background: rgba(0, 0, 0, .5);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  text-shadow: none;
+  top: 0;
+  z-index: 600;
+}
+.modal-wrap {
+  padding: 1em 0;
+  position: relative;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 90%;
+}
+@media (min-width: 40px) {
+  .modal-wrap {
+    padding: 1.75em;
+  }
+}
+@media (min-height: 40px) {
+  .modal-wrap {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -80%);
+  }
+}
+
+.modal-trigger-label {
+  background: red;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  height: 1.2em;
+  line-height: 1.2;
+  position: absolute;
+  right: .5em;
+  top: .5em;
+  width: 1.2em;
+}
+.modal-wrap h2 {
+  color: #FFD300;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+.modal-wrap p {
+  color: #FFD300;
+  text-align: justify;
+}
+.modal-input:focus ~ .modal-trigger-label {
+  transform: scale(0.97);
+}
+
+/*====================================
+  		Modal action styles
+=====================================*/
+
+.modal-input {
+  position: absolute;
+  top: -1000px;
+}
+
+.modal-overlay {
+  opacity: 0;
+  z-index: -100;
+  transform: scale(0.5);
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.modal-input:checked ~ .modal-overlay {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 800;
+}
+
+
+
+
+/****************************************************
+				NavBar && Footer Default
+****************************************************/
+.nav{
+	background-color: rgba(90, 111, 93, .8);
+	margin-bottom: 15px;
+	font-family: Raleway;
+}
+
+#navName {
+	color: #fff;
+	font-size: 2.6em;
+	font-family: lobster;
+}
+
+.nav a {
+	font-size: 1.4em;
+	color: #fff;
+}
+
+
+/****************************************************
+				Body Default
+****************************************************/
+body {
+	font-family: Raleway;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	background-color: #f1f5f0;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.icons {
+	padding-left: 5px;
+	margin-top: 3px;
+}
+/****************************************************
+				Footer Default
+****************************************************/
+.footer {
+	font-family: Raleway;
+	height: 40px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, .6);
+	z-index: 1;
+	box-shadow: 10px 0px 10px black;
+	margin-top: 4%;
+}
+
+.footer p {
+	color: #000;
+}
+
+
+/*====================================
+  		Customer Login Page
+=====================================*/
+.lowerHeader {
+	margin-top: 12%;
+}
+
+#text1 {
+	font-size: 2.5em;
+	font-style: italic;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 0px 5px 8px #000;
+}
+
+#text2 {
+	font-size: 8em;
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0px 5px 8px #000;
+}
+
+#hero1 {
+	margin-top: -85px;
+	background-image: url('../img/gathering.jpg');
+	background-size: 100% 100%;
+}
+
+#hero2 {
+	
+	padding-top: -100px;
+	background-color: #fff;
+	height: 500px;
+}
+
+#hero3 {
+	background-image: url('../img/foodImage.jpg');
+}
+
+#hero4 {
+	background-color: #fff;
+	margin-bottom: -55px;
+	height: 400px;
+}
+
+.box {
+	box-shadow: 0px 12px 13px #ccc;
+	background-color: #fbfbfb;
+
+}
+
+.box img {
+	size: 800px;
+}
+
+.p-tag-left {
+	color: rgb(90, 111, 93);
+	font-size: 2.2em;
+	margin-top: -65px;
+	margin-bottom: 10px;
+}
+
+.p-tag {
+	color: rgb(90, 111, 93);
+	font-size: 2.2em;
+	text-align: center;
+}
+
+.card {
+	box-shadow: 0px 12px 13px #ccc;
+}
+
+.card p {
+	color:  rgb(90, 111, 93);
+}
+
+#headerText1 {
+	font-size: 8em;
+	font-family: lobster;
+	color: #fff;
+	text-shadow: 0px 5px 8px #000;
+}
+
+#headerText2 {
+	font-size: 2em;
+	color: #fff;
+	text-shadow: 0px 5px 8px #000;
 }
