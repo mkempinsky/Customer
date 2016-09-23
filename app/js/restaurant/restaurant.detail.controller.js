@@ -14,6 +14,7 @@
         vm.menu = {};
         vm.addToCart = addToCart;
         vm.restaurantId = $stateParams.restaurantId;
+        vm.customerId = $stateParams.customerId;
         vm.removeItem = removeItem;
         vm.doCheckout = doCheckout;
         getMenu();
@@ -60,14 +61,14 @@
             // add payment to database
             var order = {
                 restaurantId: $stateParams.restaurantId,
-                customerId: 20,
+                customerId: $stateParams.customerId,
                 timeStamp: new Date()
             };
 
             OrderFactory.add(order).then(function(data) {
                 for(var i = 0; i < vm.cart.items.length; i++) {
                     var item = vm.cart.items[i];
-                    
+
                     var orderItem = {
                         menuItemId: item.menuItemId,
                         orderId: data.orderId
