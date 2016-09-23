@@ -11,11 +11,16 @@
     function RestaurantDetailController($stateParams, $state, restaurantFactory, StripePaymentFactory) {
         var vm = this;
         vm.title = 'restaurantDetailController';
+        
+        // variables
         vm.menu = {};
+
+        // functions
         vm.addToCart = addToCart;
         vm.restaurantId = $stateParams.restaurantId;
         vm.removeItem = removeItem;
         vm.doCheckout = doCheckout;
+        
         getMenu();
 
         ////////////////
