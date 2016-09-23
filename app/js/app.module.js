@@ -10,7 +10,7 @@
 
     function appConfig($urlRouterProvider, $stateProvider) {
 
-    	$urlRouterProvider.otherwise('/restaurants');
+    	$urlRouterProvider.otherwise('/login');
 
     	$stateProvider
     	.state('restaurants', {
@@ -19,12 +19,12 @@
             template: '<div ui-view></div>'
         })
             .state('restaurants.list', {
-                url: '/list',
+                url: '/list?customerId',
                 controller: 'RestaurantListController as restaurantList',
                 templateUrl: 'js/restaurant/restaurantList.html'
             })
             .state('restaurants.detail', {
-                url: '/detail?restaurantId',
+                url: '/detail?restaurantId?customerId',
                 controller: 'RestaurantDetailController as restaurantDetail',
                 templateUrl: 'js/restaurant/restaurant.detail.html'//Make sure this works
             })
@@ -34,10 +34,10 @@
             templateUrl: 'js/login/login.html'  
         })
         .state('orders', {
-            url: '/orders', 
+            url: '/orders?customerId', 
             controller: 'OrdersController as orders',
             templateUrl: 'js/orders/orders.html'
-        })
+        });
             
     }
 

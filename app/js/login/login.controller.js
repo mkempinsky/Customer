@@ -33,7 +33,7 @@
         	}
         	else
         	{
-        		$state.go('restaurants.list');
+        		$state.go('restaurants.list', {customerId: vm.selectedCustomer});
         	}
         }
     }
