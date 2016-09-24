@@ -248,3 +248,59 @@ main {
 	color: #fff;
 	text-shadow: 0px 5px 8px #000;
 }
+
+/*====================================
+  		Restaurant Page Login Page
+=====================================*/
+
+.menu-group-header {
+	font-size: 1.3em;
+	font-weight: bold;
+	padding-left: 10px;
+	color: #294949;
+}
+
+.panel-heading {
+	background-color: #294949;
+}
+.panel-heading p {
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #fff;
+}
+
+.add-to-cart-btn {
+	color: #fff;
+	background-color: #697f7f;
+	border: none;
+}
+
+.menu-table td{
+	max-width: 15px;
+}
+
+.checkout-box {
+	background-color: rgb(127,191,127);
+	margin-bottom: 20px;
+}
+
+.panel-block {
+	background-color: #fff;
+	box-shadow: 0px 5px 10px #ccc;
+}
+
+.cart {
+	margin-bottom: 30px;
+}
+
+.total-amt {
+	color: rgb(127,191,127);
+	font-size: 1.4em;
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+.checkout-btn {
+	background-color: rgb(127,191,127);
+	color: #fff;
+}
