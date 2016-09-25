@@ -1,4 +1,20 @@
-<div class="container is-fluid">
+<nav class="nav">
+  <div class="nav-left">
+      <a id="navName" class="nav-item is-brand" href="#">
+              NoshSpot
+          </a>
+  </div>
+  <span class="nav-toggle">
+      <span></span>
+  <span></span>
+  <span></span>
+  </span>
+  <div class="nav-right nav-menu">
+      <a class="nav-item nav-link" ui-sref="restaurants.list">Restaurant</a>
+      <a class="nav-item nav-link" ui-sref="orders">Orders History</a>
+  </div>
+</nav>
+<div class="container">
     <div class="box">
         <div clas="panel">
             <div class="panel-heading">
@@ -18,6 +34,7 @@
                                             <th><b>Description</b></th>
                                             <th><b>Price</b></th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -26,7 +43,7 @@
                                             <td>{{item.description}}</td>
                                             <td>{{item.price}}</td>
                                             <td>
-                                                <button class="button is-small add-to-cart-btn" ng-click="restaurantDetail.addToCart(item)">Add To Cart <i class="icons fa fa-shopping-cart" aria-hidden="true"></i></button>
+                                                <button class="button add-to-cart-btn" ng-click="restaurantDetail.addToCart(item)">Add To Cart <i class="icons fa fa-shopping-cart" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -75,51 +92,45 @@
             </div>
         </div>
     </div>
-            
+</div>            
             <!-- REVIEWS -->
-        <div class="box">
-            <h2>Reviews</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td><b>Description</b></td>
-                        <td><b>Rating</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="review in restaurantDetail.menu.reviews">
-                        <td>{{review.reviewDescription}}</td>
-                        <td>{{review.rating}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="control">
-                <h2>Write a review</h2>
-                <textarea class="textarea" ng-model="restaurantDetail.newReviewDescription"></textarea>
-                <input type="number" ng-model="restaurantDetail.newReviewRating" />
-            </div>
-            <button ng-click="restaurantDetail.addReview()">Submit</button>
-            
-            <div>
-                <h2>Cart</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <td><b>Name</b></td>
-                            <td><b>Price</b></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="item in restaurantDetail.cart.items">
-                            <td>{{item.name}}</td>
-                            <td>{{item.price}}</td>
-                            <td>
-                                <button ng-click="restaurantDetail.removeItem(item)">Remove</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="container">
+        <div class="box reviews">
+            <div class="panel">
+                <div class="panel-heading">
+                    <p>Reviews:</p>
+                </div>
+                <div class="panel-block">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td><b>Description</b></td>
+                                <td><b>Rating</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="review in restaurantDetail.menu.reviews">
+                                <td>{{review.reviewDescription}}</td>
+                                <td class="rating-font">{{review.rating}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="container">
+                        <div class="panel write-reviews">
+                            <div class="panel-heading">
+                                <p>Write a review:</p>
+                            </div>
+                            <div class="panel-block">
+                                <textarea class="textarea" ng-model="restaurantDetail.newReviewDescription"></textarea>
+                                <div id="ratingNumber">
+                                    <h3>Enter a Number (Between 1 and 5):</h3>
+                                    <input type="number" ng-model="restaurantDetail.newReviewRating" />
+                                </div>
+                                <button class="button is-medium review-submit-button" ng-click="restaurantDetail.addReview()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
