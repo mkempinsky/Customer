@@ -5,10 +5,10 @@
         .module('app')
         .controller('RestaurantDetailController', RestaurantDetailController);
 
-    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'OrderFactory', 'OrderItemFactory', 'StripePaymentFactory'];
+    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'OrderFactory', 'OrderItemFactory', 'StripePaymentFactory', 'reviewFactory'];
 
     /* @ngInject */
-    function RestaurantDetailController($stateParams, $state, restaurantFactory, OrderFactory, OrderItemFactory, StripePaymentFactory) {
+    function RestaurantDetailController($stateParams, $state, restaurantFactory, OrderFactory, OrderItemFactory, StripePaymentFactory, reviewFactory) {
         var vm = this;
         vm.title = 'restaurantDetailController';
         
@@ -64,8 +64,7 @@
 
         function addReview () {
             vm.newReview = {
-                //No customer id at ALL on this site//
-                customerId: 3,
+                customerId: vm.customerId,
                 restaurantId: $stateParams.restaurantId,
                 reviewDescription: vm.newReviewDescription,
                 rating: vm.newReviewRating
@@ -73,9 +72,9 @@
             reviewFactory.add(vm.newReview).then(
                 function(){
                     alert('Review added');
+                    getMenu();
                     console.log(vm.newReview);
-                }
-                );
+            });
         }
 
         function removeItem(item) {
