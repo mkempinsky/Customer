@@ -40,7 +40,7 @@
 						</td>
 						<td>{{order.orderTotal | currency: '$'}}</td>
 						<td><button class="button"
-								  ng-click="orders.doCheckout(order)">
+								  ng-click="orders.doCheckout(order)" ng-disabled="order.restaurant.restaurantId == null || order.orderItems.length == 0">
 					              Buy</button></td>
 					</tr>
 				</tbody>
