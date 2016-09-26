@@ -10,8 +10,8 @@
   <span></span>
   </span>
   <div class="nav-right nav-menu">
-      <a class="nav-item nav-link" ui-sref="restaurants.list">Restaurant</a>
-      <a class="nav-item nav-link" ui-sref="orders">Orders History</a>
+      <a class="nav-item nav-link" ui-sref="restaurants.list({customerId: orders.customerId})">Restaurant</a>
+      <a class="nav-item nav-link" ui-sref="orders({customerId: orders.customerId})">Orders History</a>
   </div>
 </nav>
 <div class="container">

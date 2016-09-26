@@ -56,7 +56,7 @@
 
         // Get orders for customer
         function allOrders() {
-            customerFactory.getById(3).then(
+            customerFactory.getById(vm.customerId).then(
                 function(data) {
                     vm.details = data;
                     console.log(vm.details);
