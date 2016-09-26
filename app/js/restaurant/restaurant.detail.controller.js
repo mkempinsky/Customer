@@ -5,10 +5,10 @@
         .module('app')
         .controller('RestaurantDetailController', RestaurantDetailController);
 
-    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'OrderFactory', 'OrderItemFactory', 'StripePaymentFactory'];
+    RestaurantDetailController.$inject = ['$stateParams', '$state', 'restaurantFactory', 'OrderFactory', 'OrderItemFactory', 'StripePaymentFactory', 'reviewFactory'];
 
     /* @ngInject */
-    function RestaurantDetailController($stateParams, $state, restaurantFactory, OrderFactory, OrderItemFactory, StripePaymentFactory) {
+    function RestaurantDetailController($stateParams, $state, restaurantFactory, OrderFactory, OrderItemFactory, StripePaymentFactory, reviewFactory) {
         var vm = this;
         vm.title = 'restaurantDetailController';
         
@@ -72,9 +72,9 @@
             reviewFactory.add(vm.newReview).then(
                 function(){
                     alert('Review added');
+                    getMenu();
                     console.log(vm.newReview);
-                }
-                );
+            });
         }
 
         function removeItem(item) {
